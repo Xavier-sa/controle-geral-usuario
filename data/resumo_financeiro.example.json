@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "entity": "resumos_financeiros",
+  "primary_key": "resumo_id",
+  "foreign_keys": {
+    "usuario_id": "usuarios.usuario_id"
+  },
+  "data": []
+}
