@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">A prosperidade floresce onde existe constância</title>
+  <desc id="desc">Ramos verdes envolvem um círculo dourado em uma composição elegante.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fbf8ef"/><stop offset=".55" stop-color="#e9f1eb"/><stop offset="1" stop-color="#d5e5da"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f2dfa4"/><stop offset=".5" stop-color="#cf9e3e"/><stop offset="1" stop-color="#94621a"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#4c9369"/><stop offset="1" stop-color="#174d36"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#123d2c" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="900" height="520" rx="28" fill="url(#paper)"/>
+  <path d="M0 410C205 370 304 445 478 394c156-46 266-13 422-65v191H0Z" fill="#fff" opacity=".45"/>
+  <g opacity=".18" fill="none" stroke="#1f6b4b">
+    <circle cx="450" cy="254" r="182"/><circle cx="450" cy="254" r="211"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="450" cy="254" r="122" fill="url(#gold)"/>
+    <circle cx="450" cy="254" r="94" fill="#f7f5ed"/>
+    <circle cx="450" cy="254" r="76" fill="#123d2c"/>
+    <path d="M450 295v-63c0-28 20-49 49-49-3 33-19 49-49 49m0 27c-30 0-49-17-51-47 30-2 51 17 51 47Z" fill="url(#gold)"/>
+  </g>
+  <g fill="none" stroke="#1f6b4b" stroke-width="9" stroke-linecap="round">
+    <path d="M90 485C168 343 245 210 371 92"/>
+    <path d="M810 485C732 343 655 210 529 92"/>
+  </g>
+  <g fill="url(#green)">
+    <ellipse cx="160" cy="365" rx="37" ry="75" transform="rotate(-55 160 365)"/>
+    <ellipse cx="228" cy="264" rx="34" ry="69" transform="rotate(-49 228 264)"/>
+    <ellipse cx="300" cy="164" rx="30" ry="62" transform="rotate(-42 300 164)"/>
+    <ellipse cx="740" cy="365" rx="37" ry="75" transform="rotate(55 740 365)"/>
+    <ellipse cx="672" cy="264" rx="34" ry="69" transform="rotate(49 672 264)"/>
+    <ellipse cx="600" cy="164" rx="30" ry="62" transform="rotate(42 600 164)"/>
+  </g>
+  <g fill="#d6aa50">
+    <circle cx="119" cy="423" r="11"/><circle cx="274" cy="207" r="9"/>
+    <circle cx="781" cy="423" r="11"/><circle cx="626" cy="207" r="9"/>
+  </g>
+</svg>
