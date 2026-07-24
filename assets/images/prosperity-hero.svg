@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" role="img" aria-labelledby="title desc">
+  <title id="title">Horizonte de prosperidade</title>
+  <desc id="desc">Colinas verdes, caminho dourado e uma planta iluminada pelo sol.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#071f17"/><stop offset=".55" stop-color="#174d36"/><stop offset="1" stop-color="#4a7d5f"/>
+    </linearGradient>
+    <radialGradient id="sun">
+      <stop stop-color="#fff5c9"/><stop offset=".42" stop-color="#efd27d"/><stop offset="1" stop-color="#c69232"/>
+    </radialGradient>
+    <linearGradient id="path" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#f5dda0"/><stop offset="1" stop-color="#bd862c"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="34"/></filter>
+  </defs>
+  <rect width="1600" height="700" fill="url(#sky)"/>
+  <circle cx="1280" cy="180" r="185" fill="#edc969" opacity=".22" filter="url(#glow)"/>
+  <circle cx="1280" cy="180" r="103" fill="url(#sun)"/>
+  <g opacity=".1" fill="none" stroke="#f5dda0">
+    <circle cx="1280" cy="180" r="154"/><circle cx="1280" cy="180" r="205"/><circle cx="1280" cy="180" r="262"/>
+  </g>
+  <path d="M0 515C236 411 465 465 676 397c241-78 463-36 924-151v454H0Z" fill="#17432f"/>
+  <path d="M0 592c305-137 546-55 787-135 236-78 467-61 813-130v373H0Z" fill="#0d3023"/>
+  <path d="M792 700c128-147 250-238 493-337-166 120-226 220-248 337Z" fill="url(#path)" opacity=".92"/>
+  <path d="M916 700c92-143 180-232 369-337-166 120-226 220-248 337Z" fill="#fff1bd" opacity=".22"/>
+  <g transform="translate(1372 440)">
+    <path d="M0 110V3" fill="none" stroke="#d4b25d" stroke-width="12" stroke-linecap="round"/>
+    <path d="M0 52c-58-3-88-33-86-76 54-3 87 27 86 76Z" fill="#c9a34f"/>
+    <path d="M0 23c18-54 57-78 104-62-9 51-44 74-104 62Z" fill="#e2c16e"/>
+  </g>
+  <g fill="#d5b35e" opacity=".62">
+    <path d="M1463 466c-43-24-46-56-46-56 36 1 54 20 46 56Z"/>
+    <path d="M1463 466c42-28 71-18 71-18-15 32-40 40-71 18Z"/>
+  </g>
+</svg>
