@@ -1,23 +1,54 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
+# Sistema e editores
+.DS_Store
+Thumbs.db
 .vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-files
-*.bclicense
-*.flf
-#Test results file
-TestResults.xml
+.idea/
+*.swp
+
+# Ambiente e segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.secret
+*.secrets.*
+credentials.*
+secrets/
+
+# Dependências, build e logs
+node_modules/
+dist/
+coverage/
+*.log
+
+# Temporários
+.cache/
+tmp/
+armazenamento/sessoes/*
+!armazenamento/sessoes/.gitkeep
+armazenamento/presencas.json
+
+# Dados pessoais e financeiros (LGPD)
+data/*.json
+!data/*.example.json
+*.sqlite
+*.sqlite3
+*.db
+*.csv
+*.xlsx
+exports/
+backups/
+
+# Documentação e anotações privadas
+docs/private/
+docs/sensitive/
+documentacao/privada/
+*.private.md
+*.confidential.md
+
+# Metadados locais de assistentes
+.agents/
+.codex/
