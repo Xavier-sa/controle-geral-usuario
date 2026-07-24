@@ -1,0 +1,10 @@
+{
+  "name": "prospera-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "php -S localhost:8000",
+    "check": "node --check js/principal.js"
+  }
+}
