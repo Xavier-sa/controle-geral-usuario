@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Disciplina hoje, liberdade amanhã</title>
+  <desc id="desc">Um caminho atravessa campos dourados em direção ao sol nascente.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#0c3023"/><stop offset=".48" stop-color="#39745a"/><stop offset=".78" stop-color="#dbb65e"/><stop offset="1" stop-color="#f2d486"/>
+    </linearGradient>
+    <radialGradient id="sun">
+      <stop stop-color="#fff9d9"/><stop offset=".48" stop-color="#f4d985"/><stop offset="1" stop-color="#d3a342"/>
+    </radialGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#c89b3e"/><stop offset="1" stop-color="#72501e"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="24"/></filter>
+  </defs>
+  <rect width="900" height="520" rx="28" fill="url(#sky)"/>
+  <circle cx="675" cy="158" r="116" fill="#f4d985" opacity=".23" filter="url(#glow)"/>
+  <circle cx="675" cy="158" r="69" fill="url(#sun)"/>
+  <path d="M0 355C183 310 325 337 465 301c163-41 274-16 435-62v281H0Z" fill="#254f38"/>
+  <path d="M0 408c170-77 315-49 457-92 160-48 274-21 443-75v279H0Z" fill="url(#field)"/>
+  <path d="M385 520c55-101 105-153 170-193 43-27 81-43 120-56-91 68-138 142-155 249Z" fill="#f6dda0" opacity=".88"/>
+  <path d="M445 520c39-97 81-149 130-184 29-21 59-38 100-65-91 68-138 142-155 249Z" fill="#fff4c7" opacity=".3"/>
+  <g fill="none" stroke="#ebc665" stroke-width="6" stroke-linecap="round">
+    <g transform="translate(112 315)"><path d="M0 205V32M0 73l-35-40M0 103l39-48M0 140l-38-38"/></g>
+    <g transform="translate(246 338) scale(.86)"><path d="M0 205V32M0 73l-35-40M0 103l39-48M0 140l-38-38"/></g>
+    <g transform="translate(737 302)"><path d="M0 218V32M0 73l-35-40M0 103l39-48M0 140l-38-38"/></g>
+    <g transform="translate(836 350) scale(.8)"><path d="M0 205V32M0 73l-35-40M0 103l39-48M0 140l-38-38"/></g>
+  </g>
+  <g opacity=".22" fill="none" stroke="#fff4c7" stroke-width="2">
+    <path d="M675 56V15M770 84l31-31M796 158h46M580 84l-31-31"/>
+  </g>
+</svg>
