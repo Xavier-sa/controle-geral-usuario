@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 560" role="img" aria-labelledby="title desc">
+  <title id="title">Prospera — clareza para cuidar do seu dinheiro</title>
+  <desc id="desc">Capa verde-escura com a marca Prospera, uma planta dourada e uma prévia do painel financeiro.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#09271c"/>
+      <stop offset=".55" stop-color="#123d2c"/>
+      <stop offset="1" stop-color="#1f6b4b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f0d88b"/>
+      <stop offset="1" stop-color="#c99a3c"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#1f6b4b" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#1f6b4b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#061710" flood-opacity=".36"/>
+    </filter>
+    <filter id="soft-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+
+  <rect width="1440" height="560" rx="32" fill="url(#background)"/>
+  <path d="M0 431C242 337 423 475 654 382c205-82 371-31 786-162v340H0Z" fill="#fff" opacity=".025"/>
+  <circle cx="1198" cy="64" r="230" fill="#e4c16d" opacity=".055"/>
+  <circle cx="126" cy="522" r="188" fill="#66a880" opacity=".055"/>
+  <g opacity=".12" fill="none" stroke="#f0d88b">
+    <circle cx="1215" cy="80" r="152"/>
+    <circle cx="1215" cy="80" r="188"/>
+    <circle cx="1215" cy="80" r="224"/>
+  </g>
+
+  <g transform="translate(104 104)">
+    <g transform="translate(0 2)">
+      <circle cx="26" cy="26" r="26" fill="url(#gold)"/>
+      <path d="M26 39V20c0-8 6-14 14-14-1 9-5 14-14 14M26 27c-8 0-13-4-14-12 8-1 14 4 14 12Z" fill="#123d2c"/>
+    </g>
+    <text x="70" y="40" fill="#fff" font-family="Georgia, 'Times New Roman', serif" font-size="39" font-weight="700">Prospera</text>
+
+    <text x="0" y="143" fill="#e4c16d" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3">FINANÇAS COM PROPÓSITO</text>
+    <text x="0" y="207" fill="#fff" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">Clareza para cuidar</text>
+    <text x="0" y="263" fill="#fff" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">do seu dinheiro.</text>
+    <text x="0" y="313" fill="#c9d8d0" font-family="Arial, sans-serif" font-size="19">Organize custos, acompanhe seu progresso</text>
+    <text x="0" y="343" fill="#c9d8d0" font-family="Arial, sans-serif" font-size="19">e transforme pequenas escolhas em patrimônio.</text>
+
+    <g transform="translate(0 390)">
+      <rect width="174" height="48" rx="12" fill="url(#gold)"/>
+      <text x="87" y="30" text-anchor="middle" fill="#17221d" font-family="Arial, sans-serif" font-size="15" font-weight="700">PHP 8.2 · MVC</text>
+      <rect x="190" width="194" height="48" rx="12" fill="#fff" opacity=".1" stroke="#fff" stroke-opacity=".18"/>
+      <circle cx="216" cy="24" r="5" fill="#58c48a"/>
+      <text x="232" y="30" fill="#edf5f0" font-family="Arial, sans-serif" font-size="15" font-weight="700">PT-BR + English</text>
+    </g>
+  </g>
+
+  <g transform="translate(755 76)" filter="url(#shadow)">
+    <rect width="590" height="408" rx="22" fill="#f7f5ed"/>
+    <rect width="126" height="408" rx="22" fill="#123d2c"/>
+    <path d="M104 0h22v408h-22Z" fill="#123d2c"/>
+    <circle cx="34" cy="36" r="15" fill="url(#gold)"/>
+    <path d="M34 44V33c0-5 4-9 9-9-1 6-3 9-9 9M34 38c-5 0-8-3-9-8 6-1 9 2 9 8Z" fill="#123d2c"/>
+    <text x="56" y="42" fill="#fff" font-family="Georgia, serif" font-size="16" font-weight="700">Prospera</text>
+    <g fill="#c9d8d0" font-family="Arial, sans-serif" font-size="10">
+      <rect x="16" y="82" width="94" height="34" rx="8" fill="#fff" opacity=".1"/>
+      <text x="31" y="103" fill="#fff">◈  Visão geral</text>
+      <text x="31" y="145">◇  Meus custos</text>
+      <text x="31" y="184">○  Usuários</text>
+    </g>
+
+    <rect x="126" width="464" height="61" rx="22" fill="#fff"/>
+    <path d="M126 39h464v22H126Z" fill="#fff"/>
+    <text x="153" y="36" fill="#68766f" font-family="Arial, sans-serif" font-size="11">Visão geral</text>
+    <circle cx="554" cy="30" r="15" fill="#e6efe9"/>
+    <text x="554" y="34" text-anchor="middle" fill="#1f6b4b" font-family="Arial, sans-serif" font-size="10" font-weight="700">WX</text>
+
+    <text x="153" y="93" fill="#17221d" font-family="Georgia, serif" font-size="19" font-weight="700">Bom dia, Wellington</text>
+    <text x="153" y="111" fill="#68766f" font-family="Arial, sans-serif" font-size="9">Aqui está o seu panorama financeiro.</text>
+
+    <g transform="translate(153 133)">
+      <g>
+        <rect width="126" height="70" rx="11" fill="#fff"/>
+        <text x="13" y="20" fill="#68766f" font-family="Arial, sans-serif" font-size="8">SALDO DISPONÍVEL</text>
+        <text x="13" y="46" fill="#17221d" font-family="Georgia, serif" font-size="17" font-weight="700">R$ 4.280</text>
+        <text x="13" y="60" fill="#1f6b4b" font-family="Arial, sans-serif" font-size="7">↑ 12% este mês</text>
+      </g>
+      <g transform="translate(137)">
+        <rect width="126" height="70" rx="11" fill="#fff"/>
+        <text x="13" y="20" fill="#68766f" font-family="Arial, sans-serif" font-size="8">CUSTOS FIXOS</text>
+        <text x="13" y="46" fill="#17221d" font-family="Georgia, serif" font-size="17" font-weight="700">R$ 2.150</text>
+        <rect x="13" y="57" width="96" height="5" rx="3" fill="#e6efe9"/>
+        <rect x="13" y="57" width="61" height="5" rx="3" fill="#c99a3c"/>
+      </g>
+      <g transform="translate(274)">
+        <rect width="126" height="70" rx="11" fill="#fff"/>
+        <text x="13" y="20" fill="#68766f" font-family="Arial, sans-serif" font-size="8">META MENSAL</text>
+        <text x="13" y="46" fill="#17221d" font-family="Georgia, serif" font-size="17" font-weight="700">72%</text>
+        <text x="13" y="60" fill="#1f6b4b" font-family="Arial, sans-serif" font-size="7">Progresso saudável</text>
+      </g>
+    </g>
+
+    <g transform="translate(153 216)">
+      <rect width="257" height="160" rx="12" fill="#fff"/>
+      <text x="15" y="24" fill="#17221d" font-family="Georgia, serif" font-size="12" font-weight="700">Evolução do patrimônio</text>
+      <text x="15" y="39" fill="#68766f" font-family="Arial, sans-serif" font-size="7">Últimos seis meses</text>
+      <g stroke="#dde4df" stroke-width=".7">
+        <path d="M15 68H242M15 99H242M15 130H242"/>
+      </g>
+      <path d="M16 130C45 119 57 123 85 102s52-6 80-31 48-8 77-31v93H16Z" fill="url(#chart)"/>
+      <path d="M16 130C45 119 57 123 85 102s52-6 80-31 48-8 77-31" fill="none" stroke="#1f6b4b" stroke-width="3" stroke-linecap="round"/>
+      <g fill="#1f6b4b">
+        <circle cx="85" cy="102" r="3"/><circle cx="165" cy="71" r="3"/><circle cx="242" cy="40" r="3"/>
+      </g>
+    </g>
+    <g transform="translate(421 216)">
+      <rect width="121" height="160" rx="12" fill="#e6efe9"/>
+      <text x="14" y="25" fill="#1f6b4b" font-family="Arial, sans-serif" font-size="8" font-weight="700">PRÓXIMA COLHEITA</text>
+      <circle cx="61" cy="75" r="28" fill="none" stroke="#fff" stroke-width="8"/>
+      <path d="M61 47a28 28 0 1 1-25 40" fill="none" stroke="#c99a3c" stroke-width="8" stroke-linecap="round"/>
+      <text x="61" y="80" text-anchor="middle" fill="#17221d" font-family="Georgia, serif" font-size="15" font-weight="700">82%</text>
+      <text x="61" y="121" text-anchor="middle" fill="#17221d" font-family="Georgia, serif" font-size="10" font-weight="700">Continue assim</text>
+      <text x="61" y="138" text-anchor="middle" fill="#68766f" font-family="Arial, sans-serif" font-size="7">Faltam R$ 540</text>
+    </g>
+  </g>
+</svg>
