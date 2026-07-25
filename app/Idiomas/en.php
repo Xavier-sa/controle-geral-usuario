@@ -1,6 +1,6 @@
 <?php
 return [
-    'visao_geral'=>'Overview','custos_fixos'=>'Fixed costs','usuarios'=>'Users','comunidade'=>'Community','indicar'=>'Invite friends',
+    'visao_geral'=>'Overview','custos_fixos'=>'Fixed costs','minhas_rendas'=>'My income','calendario_anual'=>'Annual calendar','usuarios'=>'Users','comunidade'=>'Community','indicar'=>'Invite friends',
     'futuro'=>'Your future starts now','titulo'=>'Prosperity grows from clear decisions.',
     'descricao'=>'Organize your finances, track progress and turn every choice into a step toward abundance.',
     'ver_custos'=>'View my costs','indicar_alguem'=>'Invite someone','renda'=>'Monthly income','saldo'=>'Projected balance',
