@@ -6,7 +6,7 @@ namespace Aplicacao\Nucleo;
 
 use RuntimeException;
 
-final class RepositorioJson
+final class RepositorioJson implements RepositorioDados
 {
     public function __construct(private readonly string $diretorio)
     {
