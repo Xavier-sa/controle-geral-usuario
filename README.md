@@ -19,13 +19,18 @@ o saldo projetado da sua realidade.
 ## Executar
 
 ```bash
+cp .env.example .env
 cp data/usuarios.example.json data/usuarios.json
 cp data/custos_fixos.example.json data/custos_fixos.json
 cp data/resumo_financeiro.example.json data/resumo_financeiro.json
+cp data/fontes_renda.example.json data/fontes_renda.json
+php bin/migrar-banco.php
 php -S localhost:8000
 ```
 
 Acesse `http://localhost:8000`. Não há dependências ou etapa de compilação.
+Use `DB_CONNECTION=mysql` para persistência online ou outro valor para o modo
+JSON local.
 
 ## Acesso inicial
 
@@ -72,6 +77,24 @@ por um banco de dados seguro e configure backups, auditoria e rotação de acess
 Os arquivos `data/*.json` reais não são versionados porque armazenam dados
 pessoais e financeiros. Somente os modelos anônimos `*.example.json` fazem
 parte do repositório.
+
+## Banco de dados
+
+- DDL versionado: `database/ddl/`
+- DML idempotente: `database/dml/`
+- Aplicar migrações: `php bin/migrar-banco.php`
+- Importar JSON local: `php bin/importar-json.php --confirmar`
+- Agente responsável: `agents/agente-banco-de-dados.md`
+
+Cada usuário pode manter várias fontes em `fontes_renda`, incluindo salário,
+aplicativos de transporte, trabalho autônomo, benefícios e bicos. O total é
+recalculado no usuário e no resumo financeiro sempre que uma fonte muda.
+
+O calendário anual projeta os custos de janeiro a dezembro. Cada gasto pode
+ser mensal e permanente, mensal com data final ou pontual no mês inicial.
+
+Migrações aplicadas são registradas com checksum em `schema_migrations` e não
+devem ser editadas. Uma mudança posterior sempre recebe um novo arquivo.
 
 Para testar novamente o primeiro acesso, remova `prospera_termos_versao` do
 armazenamento local do navegador.
