@@ -5,19 +5,23 @@ declare(strict_types=1);
 namespace Aplicacao\Repositorios;
 
 use Aplicacao\Modelos\CustoFixo;
-use Aplicacao\Nucleo\RepositorioJson;
+use Aplicacao\Nucleo\RepositorioDados;
 
 final class CustoFixoRepositorio
 {
     private const CUSTOS_INICIAIS = [
         ['nome' => 'Moradia', 'categoria' => 'habitação', 'icone' => '⌂'],
-        ['nome' => 'Energia e água', 'categoria' => 'serviços', 'icone' => '◉'],
+        ['nome' => 'Energia', 'categoria' => 'serviços', 'icone' => '◉'],
+        ['nome' => 'Água', 'categoria' => 'serviços', 'icone' => '≈'],
         ['nome' => 'Internet', 'categoria' => 'conectividade', 'icone' => '⌁'],
         ['nome' => 'Alimentação', 'categoria' => 'essenciais', 'icone' => '◇'],
         ['nome' => 'Transporte', 'categoria' => 'mobilidade', 'icone' => '→'],
+        ['nome' => 'Financiamento da casa', 'categoria' => 'financiamentos', 'icone' => '⌂'],
+        ['nome' => 'Financiamento do carro', 'categoria' => 'financiamentos', 'icone' => '▣'],
+        ['nome' => 'Financiamento da moto', 'categoria' => 'financiamentos', 'icone' => '◇'],
     ];
 
-    public function __construct(private readonly RepositorioJson $repositorio) {}
+    public function __construct(private readonly RepositorioDados $repositorio) {}
 
     /** @return array<int, CustoFixo> */
     public function listarPorUsuario(string $usuarioId): array
@@ -42,6 +46,10 @@ final class CustoFixoRepositorio
                 'moeda' => 'BRL',
                 'ativo' => true,
                 'personalizado' => false,
+                'recorrente' => true,
+                'recorrencia_inicio' => date('Y-01-01'),
+                'recorrencia_fim' => null,
+                'dia_vencimento' => null,
                 'criado_em' => gmdate('c'),
                 'atualizado_em' => gmdate('c'),
             ];
@@ -71,6 +79,10 @@ final class CustoFixoRepositorio
             'moeda' => 'BRL',
             'ativo' => true,
             'personalizado' => true,
+            'recorrente' => true,
+            'recorrencia_inicio' => date('Y-m-01'),
+            'recorrencia_fim' => null,
+            'dia_vencimento' => null,
             'criado_em' => $agora,
             'atualizado_em' => $agora,
         ];
@@ -99,6 +111,32 @@ final class CustoFixoRepositorio
             static fn(float $total, CustoFixo $custo): float => $total + (float) $custo->obter('valor_mensal'),
             0.0
         );
+    }
+
+    public function atualizarRecorrencia(string $usuarioId, string $custoId, bool $recorrente, string $inicio, ?string $fim, mixed $diaVencimento): bool
+    {
+        if (!preg_match('/^\d{4}-\d{2}$/', $inicio)) return false;
+        $inicioData = $inicio . '-01';
+        if ($fim !== null && $fim !== '') {
+            if (!preg_match('/^\d{4}-\d{2}$/', $fim) || $fim < $inicio) return false;
+            $fimData = date('Y-m-t', strtotime($fim . '-01'));
+        } else {
+            $fimData = null;
+        }
+        $dia = filter_var($diaVencimento, FILTER_VALIDATE_INT, ['options'=>['min_range'=>1,'max_range'=>31]]);
+        $todos = $this->repositorio->listar('custos_fixos.json');
+        foreach ($todos as &$custo) {
+            if ($custo['usuario_id'] !== $usuarioId || $custo['custo_fixo_id'] !== $custoId) continue;
+            $custo['recorrente'] = $recorrente;
+            $custo['recorrencia_inicio'] = $inicioData;
+            $custo['recorrencia_fim'] = $fimData;
+            $custo['dia_vencimento'] = $dia === false ? null : $dia;
+            $custo['atualizado_em'] = gmdate('c');
+            $this->repositorio->salvar('custos_fixos.json', $todos);
+            return true;
+        }
+        unset($custo);
+        return false;
     }
 
     /** @param array<string, mixed> $valores @param array<string, mixed> $situacoes */
