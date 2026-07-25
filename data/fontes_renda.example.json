@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "entity": "fontes_renda",
+  "primary_key": "fonte_renda_id",
+  "foreign_keys": {
+    "usuario_id": "usuarios.usuario_id"
+  },
+  "data": []
+}
