@@ -5,7 +5,7 @@
   <meta name="description" content="Prospera — clareza financeira para construir um futuro abundante.">
   <meta name="theme-color" content="#10291f"><title>Prospera | Painel financeiro</title>
   <link rel="icon" href="assets/images/favicon-wx.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -16,8 +16,8 @@
         <button class="botao-recolher" id="botao-recolher" type="button" aria-label="Recolher menu" aria-expanded="true">‹</button>
       </div>
       <nav class="nav" aria-label="Principal">
-        <?php $itensMenu=['inicio'=>['visao_geral','⌂'],'custos'=>['custos_fixos','◇'],'usuarios'=>['comunidade','◎']];foreach ($itensMenu as $destino => [$rotulo, $icone]): ?>
-          <a class="<?= $pagina === $destino ? 'active' : '' ?>" href="?pagina=<?= $destino ?>&amp;idioma=<?= Visao::escapar($idioma) ?>"><span class="icone-menu" aria-hidden="true"><?= $icone ?></span><span><?= Visao::escapar($tradutor->obter($rotulo)) ?></span></a>
+        <?php $itensMenu=['inicio'=>['visao_geral','⌂'],'rendas'=>['minhas_rendas','＋'],'custos'=>['custos_fixos','◇'],'calendario'=>['calendario_anual','▦'],'usuarios'=>['comunidade','◎']];foreach ($itensMenu as $destino => [$rotulo, $icone]): ?>
+          <a class="<?= $pagina === $destino ? 'active' : '' ?>" href="?pagina=<?= $destino ?>&amp;idioma=<?= Visao::escapar($idioma) ?>"><span class="icone-menu icone-menu-<?= Visao::escapar($destino) ?>" aria-hidden="true"><?= $icone ?></span><span><?= Visao::escapar($tradutor->obter($rotulo)) ?></span></a>
         <?php endforeach; ?>
       </nav>
       <div class="sidebar-note"><?= Visao::escapar($tradutor->obter('clareza')) ?></div>
@@ -49,6 +49,6 @@
     </div>
   </div>
   <div class="toast" id="aviso" hidden></div>
-  <script src="js/principal.js" defer></script>
+  <script src="js/principal.js?v=3" defer></script>
 </body>
 </html>
