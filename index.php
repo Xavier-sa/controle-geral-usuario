@@ -9,6 +9,7 @@ use Aplicacao\Nucleo\ConexaoMySql;
 use Aplicacao\Nucleo\RepositorioJson;
 use Aplicacao\Nucleo\RepositorioMySql;
 use Aplicacao\Repositorios\CustoFixoRepositorio;
+use Aplicacao\Repositorios\ConviteRepositorio;
 use Aplicacao\Repositorios\FonteRendaRepositorio;
 use Aplicacao\Repositorios\ResumoFinanceiroRepositorio;
 use Aplicacao\Repositorios\UsuarioRepositorio;
@@ -33,6 +34,7 @@ $controlador = new PainelControlador(
     new UsuarioRepositorio($repositorioDados),
     new CustoFixoRepositorio($repositorioDados),
     new FonteRendaRepositorio($repositorioDados),
+    new ConviteRepositorio($repositorioDados),
     new ResumoFinanceiroRepositorio($repositorioDados),
     new ServicoPresenca(__DIR__ . '/armazenamento/presencas.json'),
     __DIR__ . '/app/Visoes'

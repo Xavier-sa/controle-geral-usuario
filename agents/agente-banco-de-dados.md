@@ -33,6 +33,8 @@ npm run check
     usuário e o `saldo_projetado` do resumo financeiro.
 12. Recorrências de custos devem aceitar término nulo como permanência,
     validar que o fim não antecede o início e nunca gerar lançamentos duplicados.
+13. Convites devem expirar, permitir apenas um uso e persistir somente hashes do
+    token e do código. Nunca associar dados pessoais ao convite antes do aceite.
 
 ## Fluxo recomendado
 

@@ -58,6 +58,15 @@ document.querySelector('#copiar-indicacao')?.addEventListener('click', async () 
   window.setTimeout(() => aviso.hidden = true, 2200);
 });
 
+document.querySelectorAll('[data-copiar]').forEach((botao) => botao.addEventListener('click', async () => {
+  const campo = document.querySelector(botao.dataset.copiar);
+  if (!campo) return;
+  await navigator.clipboard.writeText(campo.value);
+  const textoOriginal = botao.textContent;
+  botao.textContent = 'Copiado!';
+  window.setTimeout(() => botao.textContent = textoOriginal, 1800);
+}));
+
 const seletorDespesa = document.querySelector('#seletor-despesa');
 const seletorCategoria = document.querySelector('#seletor-categoria');
 const campoOutraDespesa = document.querySelector('#campo-outra-despesa');

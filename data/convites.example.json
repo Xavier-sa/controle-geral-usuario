@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "entity": "convites",
+  "primary_key": "convite_id",
+  "data": []
+}

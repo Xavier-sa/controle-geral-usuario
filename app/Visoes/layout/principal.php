@@ -5,7 +5,7 @@
   <meta name="description" content="Prospera — clareza financeira para construir um futuro abundante.">
   <meta name="theme-color" content="#10291f"><title>Prospera | Painel financeiro</title>
   <link rel="icon" href="assets/images/favicon-wx.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -49,6 +49,6 @@
     </div>
   </div>
   <div class="toast" id="aviso" hidden></div>
-  <script src="js/principal.js?v=3" defer></script>
+  <script src="js/principal.js?v=6" defer></script>
 </body>
 </html>

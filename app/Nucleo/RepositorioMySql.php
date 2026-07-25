@@ -28,6 +28,10 @@ final class RepositorioMySql implements RepositorioDados
             'tabela' => 'fontes_renda', 'chave' => 'fonte_renda_id',
             'colunas' => ['fonte_renda_id','usuario_id','nome','tipo','valor_mensal','ativo','criado_em','atualizado_em'],
         ],
+        'convites.json' => [
+            'tabela' => 'convites', 'chave' => 'convite_id',
+            'colunas' => ['convite_id','indicador_usuario_id','usuario_criado_id','token_hash','codigo_hash','codigo_final','status','expira_em','usado_em','criado_em','atualizado_em'],
+        ],
     ];
 
     public function __construct(private readonly PDO $pdo) {}

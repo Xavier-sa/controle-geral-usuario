@@ -24,6 +24,7 @@ cp data/usuarios.example.json data/usuarios.json
 cp data/custos_fixos.example.json data/custos_fixos.json
 cp data/resumo_financeiro.example.json data/resumo_financeiro.json
 cp data/fontes_renda.example.json data/fontes_renda.json
+cp data/convites.example.json data/convites.json
 php bin/migrar-banco.php
 php -S localhost:8000
 ```
@@ -37,14 +38,17 @@ JSON local.
 Crie o administrador inicial diretamente no armazenamento seguro do ambiente.
 Nunca publique credenciais padrão ou dados reais no repositório.
 
-O administrador pode criar, editar e excluir usuários. Novos usuários recebem
-as categorias de custos como pendentes e só acessam a área de prosperidade
-depois de informar um valor ou selecionar “Não tenho gasto aqui” em todas elas.
+O administrador pode editar e excluir usuários. O cadastro de uma nova pessoa
+é feito por convite: o indicador gera um código ou link temporário, e o próprio
+convidado informa nome, apelido, e-mail e senha. Novos usuários recebem as
+categorias de custos como pendentes e só acessam a área de prosperidade depois
+de informar um valor ou selecionar “Não tenho gasto aqui” em todas elas.
 
 O acesso é fechado por convite. Xavier é o administrador raiz; membros com o
 perfil financeiro concluído também podem convidar pessoas. Um convite concluído
 gera uma estrela para o indicador e alimenta o ranking público por apelido.
-E-mail, renda e empresa não aparecem para outros membros.
+E-mail, renda e empresa não aparecem para outros membros. Convites expiram em
+sete dias, são de uso único e podem ser revogados por quem os gerou.
 
 ## Arquitetura
 
@@ -69,10 +73,11 @@ convite.
 
 ## Dados e segurança
 
-Os JSONs usam UUIDs, chaves estrangeiras e datas ISO 8601. Consulte
-`data/schema.md`. A aplicação utiliza autenticação por senha com hash,
-autorização por perfil e token CSRF. Antes da publicação, substitua os JSONs
-por um banco de dados seguro e configure backups, auditoria e rotação de acesso.
+Os JSONs usam identificadores únicos, chaves estrangeiras e datas ISO 8601.
+Consulte `data/schema.md`. A aplicação utiliza autenticação por senha com hash,
+autorização por perfil e token CSRF. Códigos e tokens de convite também são
+persistidos somente como hash. Em produção, use banco de dados seguro e
+configure backups, auditoria e rotação de acesso.
 
 Os arquivos `data/*.json` reais não são versionados porque armazenam dados
 pessoais e financeiros. Somente os modelos anônimos `*.example.json` fazem

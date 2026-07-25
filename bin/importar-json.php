@@ -19,7 +19,7 @@ Configuracao::carregar(dirname(__DIR__) . '/.env');
 $origem = new RepositorioJson(dirname(__DIR__) . '/data');
 $destino = new RepositorioMySql(ConexaoMySql::criar());
 
-foreach (['usuarios.json','custos_fixos.json','resumo_financeiro.json','fontes_renda.json'] as $arquivo) {
+foreach (['usuarios.json','custos_fixos.json','resumo_financeiro.json','fontes_renda.json','convites.json'] as $arquivo) {
     $dados = $origem->listar($arquivo);
     $destino->salvar($arquivo, $dados);
     echo basename($arquivo) . ': ' . count($dados) . " registros importados\n";

@@ -13,14 +13,17 @@ Os arquivos JSON usam um envelope de metadados e uma coleção `data`. Cada obje
 - `fontes_renda`: fontes mensais editáveis de cada usuário; a soma mantém
   `usuarios.renda_mensal` e o saldo projetado sincronizados.
 - `categorias_despesa`: catálogo de categorias mantido por DML idempotente.
+- `convites`: códigos e links temporários de uso único. Mantém somente os hashes
+  das credenciais, o indicador, a expiração e, após o aceite, o usuário criado.
 - `schema_migrations`: controle de versão e checksum do DDL/DML aplicado.
 
 Índices implementados: `usuarios(email)` único,
 `usuarios(codigo_indicacao)` único, `custos_mensais(usuario_id, ativo)` e
 `fontes_renda(usuario_id, ativo)` e `resumos_financeiros(usuario_id, periodo)`
-único. `perfil`, `status` e
-`situacao` usam enums controlados. Senhas são armazenadas somente como hash.
-Tokens e senhas em texto puro nunca devem ser persistidos.
+único. Em `convites`, os hashes de token e código são únicos, e há índices por
+indicador/status e por expiração. `perfil`, `status` e `situacao` usam enums
+controlados. Senhas, tokens e códigos de convite são armazenados somente como
+hash; credenciais em texto puro nunca devem ser persistidas.
 
 O ranking deve publicar somente apelido, posição, estrelas e mês de entrada.
 E-mail, renda e empresa são privados e não devem ser expostos a outros membros.
