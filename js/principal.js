@@ -77,9 +77,29 @@ seletorDespesa?.addEventListener('change', () => {
   if (seletorDespesa.value === 'Jogos e apostas' && seletorCategoria) {
     seletorCategoria.value = 'jogos e apostas';
   }
+  if (seletorDespesa.value.startsWith('Financiamento d') && seletorCategoria) {
+    seletorCategoria.value = 'financiamentos';
+  }
   if (seletorDespesa.value === 'outro') nomeOutraDespesa?.focus();
 });
 atualizarOutraDespesa();
+
+const posicoesIconesCustos = {
+  'Moradia': '0% 0%', 'Energia': '50% 0%', 'Água': '100% 0%',
+  'Internet': '0% 50%', 'Alimentação': '50% 50%', 'Transporte': '100% 50%',
+  'Financiamento da casa': '0% 100%', 'Financiamento do carro': '50% 100%',
+  'Financiamento da moto': '100% 100%',
+};
+
+document.querySelectorAll('.campo-custo, .cost-row').forEach((linha) => {
+  const nome = linha.querySelector('strong, h3')?.textContent.trim();
+  const posicao = posicoesIconesCustos[nome];
+  const icone = linha.querySelector('.cost-icon');
+  if (!posicao || !icone) return;
+  icone.textContent = '';
+  icone.classList.add('cost-icon-anime');
+  icone.style.backgroundPosition = posicao;
+});
 
 const camposCusto = [...document.querySelectorAll('[data-campo-custo]')];
 const situacoesCusto = [...document.querySelectorAll('[data-situacao-custo]')];
@@ -116,9 +136,16 @@ camposCusto.forEach((campo, indice) => campo.addEventListener('input', () => {
 situacoesCusto.forEach((situacao, indice) => situacao.addEventListener('change', () => {
   const semGasto = situacao.value === 'sem_gasto';
   camposCusto[indice].disabled = semGasto;
-  if (semGasto) camposCusto[indice].value = '0.00';
+  if (semGasto) camposCusto[indice].value = '';
   atualizarProgressoCustos();
 }));
+
+document.querySelectorAll('input[inputmode="decimal"]').forEach((campo) => {
+  campo.addEventListener('focus', () => {
+    if (converterValor(campo.value) === 0) campo.value = '';
+    else campo.select();
+  });
+});
 
 const usuariosOnline = document.querySelector('#usuarios-online');
 const quantidadeOnline = document.querySelector('#quantidade-online');
