@@ -5,7 +5,7 @@
   <meta name="description" content="Prospera — clareza financeira para construir um futuro abundante.">
   <meta name="theme-color" content="#10291f"><title>Prospera | Painel financeiro</title>
   <link rel="icon" href="assets/images/favicon-wx.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>

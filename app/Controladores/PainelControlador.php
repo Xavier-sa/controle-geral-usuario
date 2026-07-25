@@ -33,7 +33,7 @@ final class PainelControlador
         if($usuario->obter('perfil_completo_em')===null&&!$usuario->ehAdministrador())$pagina='perfil_inicial';
         if($pagina==='usuario_formulario'&&!$this->usuarios->podeConvidar($usuario)){$pagina='usuarios';}
         $this->custos->criarParaUsuario((string)$usuario->obter('usuario_id'));
-        if($pagina==='inicio'&&!$this->custos->completo((string)$usuario->obter('usuario_id'))){header('Location: ?pagina=custos&bloqueado=1');exit;}
+        if($pagina==='inicio'&&!$usuario->ehAdministrador()&&!$this->custos->completo((string)$usuario->obter('usuario_id'))){header('Location: ?pagina=custos&bloqueado=1');exit;}
         $custos=$this->custos->listarPorUsuario((string)$usuario->obter('usuario_id'));
         $anoCalendario=max(2020,min(2100,(int)($consulta['ano']??date('Y'))));
         Visao::renderizar($this->diretorioVisoes,$pagina,['pagina'=>$pagina,'idioma'=>$idioma,'tradutor'=>$tradutor,'usuarioAtual'=>$usuario,'usuarios'=>$this->usuarios->listar(),'ranking'=>$this->usuarios->ranking(),'podeConvidar'=>$this->usuarios->podeConvidar($usuario),'usuarioEdicao'=>isset($consulta['id'])&&$usuario->ehAdministrador()?$this->usuarios->buscarPorId($consulta['id']):null,'custos'=>$custos,'fontesRenda'=>$this->rendas->listarPorUsuario((string)$usuario->obter('usuario_id')),'resumo'=>$this->resumos->atual((string)$usuario->obter('usuario_id')),'anoCalendario'=>$anoCalendario,'quantidadeOnline'=>$quantidadeOnline,'token'=>$this->token()]);
