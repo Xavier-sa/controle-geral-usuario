@@ -1,4 +1,4 @@
-<!doctype html><html lang="<?= Visao::escapar($idioma) ?>"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aceitar convite | Prospera</title><link rel="icon" href="assets/images/favicon-wx.svg" type="image/svg+xml"><link rel="stylesheet" href="css/style.css?v=6"></head>
+<!doctype html><html lang="<?= Visao::escapar($idioma) ?>"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aceitar convite | Prospera</title><link rel="icon" href="assets/images/favicon-wx.svg" type="image/svg+xml"><link rel="stylesheet" href="css/style.css?v=7"></head>
 <body class="pagina-login"><main class="cartao-login cartao-convite"><div class="brand marca-login"><span class="brand-mark">↑</span>Prospera</div>
 <?php if(!$convite): ?><h1>Convite indisponível</h1><p>Este convite expirou, já foi utilizado ou não é válido.</p><a class="btn btn-primary" href="?pagina=login">Voltar ao login</a>
 <?php else: ?><span class="eyebrow">Você foi convidado</span><h1>Crie seu acesso</h1><p>Preencha seus próprios dados. Quem convidou você não verá sua renda, empresa ou senha.</p>

@@ -5,7 +5,7 @@
   <meta name="description" content="Prospera — clareza financeira para construir um futuro abundante.">
   <meta name="theme-color" content="#10291f"><title>Prospera | Painel financeiro</title>
   <link rel="icon" href="assets/images/favicon-wx.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -34,7 +34,7 @@
           </div>
           <a class="language" href="?pagina=<?= $pagina ?>&amp;idioma=<?= $idioma === 'pt-BR' ? 'en' : 'pt-BR' ?>"><?= $idioma === 'pt-BR' ? 'EN' : 'PT' ?></a>
           <?php $nomeExibicao=$usuarioAtual->obter('apelido')?:$usuarioAtual->obter('nome'); ?><div class="user-chip"><div class="user-avatar"><?= strtoupper(substr((string)$nomeExibicao,0,2)) ?></div><span><?= Visao::escapar($nomeExibicao) ?></span></div>
-          <form method="post" class="formulario-sair"><input type="hidden" name="token" value="<?= Visao::escapar($token) ?>"><input type="hidden" name="acao" value="sair"><button class="icon-btn" title="Sair" aria-label="Sair">↪</button></form>
+          <form method="post" class="formulario-sair"><input type="hidden" name="token" value="<?= Visao::escapar($token) ?>"><input type="hidden" name="acao" value="sair"><button class="icon-btn botao-sair" type="submit" title="Sair" aria-label="Sair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg></button></form>
         </div>
       </header>
       <main class="content" id="conteudo"><?= $conteudo ?></main>
