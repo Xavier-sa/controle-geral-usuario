@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Aplicacao\Repositorios;
 
 use Aplicacao\Modelos\ResumoFinanceiro;
-use Aplicacao\Nucleo\RepositorioJson;
+use Aplicacao\Nucleo\RepositorioDados;
 
 final class ResumoFinanceiroRepositorio
 {
-    public function __construct(private readonly RepositorioJson $repositorio)
+    public function __construct(private readonly RepositorioDados $repositorio)
     {
     }
 
