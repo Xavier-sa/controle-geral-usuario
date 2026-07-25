@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 use Aplicacao\Controladores\PainelControlador;
 use Aplicacao\Nucleo\Aplicacao;
+use Aplicacao\Nucleo\Configuracao;
+use Aplicacao\Nucleo\ConexaoMySql;
 use Aplicacao\Nucleo\RepositorioJson;
+use Aplicacao\Nucleo\RepositorioMySql;
 use Aplicacao\Repositorios\CustoFixoRepositorio;
+use Aplicacao\Repositorios\FonteRendaRepositorio;
 use Aplicacao\Repositorios\ResumoFinanceiroRepositorio;
 use Aplicacao\Repositorios\UsuarioRepositorio;
 use Aplicacao\Servicos\ServicoPresenca;
@@ -21,11 +25,15 @@ require __DIR__ . '/app/Nucleo/Aplicacao.php';
 
 Aplicacao::registrarCarregamentoAutomatico(__DIR__ . '/app');
 
-$repositorioJson = new RepositorioJson(__DIR__ . '/data');
+Configuracao::carregar(__DIR__ . '/.env');
+$repositorioDados = getenv('DB_CONNECTION') === 'mysql'
+    ? new RepositorioMySql(ConexaoMySql::criar())
+    : new RepositorioJson(__DIR__ . '/data');
 $controlador = new PainelControlador(
-    new UsuarioRepositorio($repositorioJson),
-    new CustoFixoRepositorio($repositorioJson),
-    new ResumoFinanceiroRepositorio($repositorioJson),
+    new UsuarioRepositorio($repositorioDados),
+    new CustoFixoRepositorio($repositorioDados),
+    new FonteRendaRepositorio($repositorioDados),
+    new ResumoFinanceiroRepositorio($repositorioDados),
     new ServicoPresenca(__DIR__ . '/armazenamento/presencas.json'),
     __DIR__ . '/app/Visoes'
 );
