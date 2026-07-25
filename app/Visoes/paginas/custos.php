@@ -27,6 +27,9 @@ $classeProgresso = $percentualPreenchido < 40 ? 'inicio' : ($percentualPreenchid
           <option value="Doces e lanches">Doces e lanches</option>
           <option value="Delivery">Delivery</option>
           <option value="Restaurantes">Restaurantes</option>
+          <option value="Financiamento da casa">Financiamento da casa</option>
+          <option value="Financiamento do carro">Financiamento do carro</option>
+          <option value="Financiamento da moto">Financiamento da moto</option>
           <option value="Jogos e apostas">Jogos e apostas (Tigrinho, bets e loterias)</option>
           <option value="Academia">Academia</option>
           <option value="Medicamentos">Medicamentos</option>
@@ -44,6 +47,7 @@ $classeProgresso = $percentualPreenchido < 40 ? 'inicio' : ($percentualPreenchid
           <option value="assinaturas">Assinaturas</option>
           <option value="cuidados pessoais">Cuidados pessoais</option>
           <option value="educação">Educação</option>
+          <option value="financiamentos">Financiamentos</option>
           <option value="hábitos pessoais">Hábitos pessoais</option>
           <option value="jogos e apostas">Jogos e apostas</option>
           <option value="lazer">Lazer</option>
@@ -66,7 +70,7 @@ $classeProgresso = $percentualPreenchido < 40 ? 'inicio' : ($percentualPreenchid
   <form method="post" class="panel formulario-custos" id="formulario-custos">
     <input type="hidden" name="token" value="<?= Visao::escapar($token) ?>"><input type="hidden" name="acao" value="salvar_custos">
     <?php foreach ($custos as $custo): ?>
-      <div class="campo-custo"><span class="cost-icon" aria-hidden="true"><?= Visao::escapar($custo->obter('icone')) ?></span><span class="dados-custo"><strong><?= Visao::escapar($custo->obter('nome')) ?></strong><small><?= Visao::escapar($custo->obter('categoria')) ?><?= $custo->obter('personalizado') ? ' · personalizada' : '' ?></small></span><div class="resposta-custo"><select data-situacao-custo name="situacoes[<?= Visao::escapar($custo->obter('custo_fixo_id')) ?>]" aria-label="Situação de <?= Visao::escapar($custo->obter('nome')) ?>"><option value="pendente" <?= $custo->obter('situacao')==='pendente'?'selected':'' ?>>Selecione</option><option value="com_gasto" <?= $custo->obter('situacao')==='com_gasto'?'selected':'' ?>>Tenho gasto</option><option value="sem_gasto" <?= $custo->obter('situacao')==='sem_gasto'?'selected':'' ?>>Não tenho gasto aqui</option></select><span class="entrada-monetaria"><span>R$</span><input data-campo-custo type="text" name="valores[<?= Visao::escapar($custo->obter('custo_fixo_id')) ?>]" value="<?= number_format((float) $custo->obter('valor_mensal'), 2, ',', '.') ?>" inputmode="decimal" placeholder="0,00" <?= $custo->obter('situacao')==='sem_gasto'?'disabled':'' ?>></span><?php if ($custo->obter('personalizado')): ?><button class="botao-remover-custo" type="submit" name="acao" value="excluir_custo" formaction="" onclick="this.form.custo_id.value='<?= Visao::escapar($custo->obter('custo_fixo_id')) ?>';return confirm('Remover esta despesa?')" aria-label="Remover <?= Visao::escapar($custo->obter('nome')) ?>">×</button><?php endif; ?></div></div>
+      <div class="campo-custo"><span class="cost-icon" aria-hidden="true"><?= Visao::escapar($custo->obter('icone')) ?></span><span class="dados-custo"><strong><?= Visao::escapar($custo->obter('nome')) ?></strong><small><?= Visao::escapar($custo->obter('categoria')) ?><?= $custo->obter('personalizado') ? ' · personalizada' : '' ?></small></span><div class="resposta-custo"><select data-situacao-custo name="situacoes[<?= Visao::escapar($custo->obter('custo_fixo_id')) ?>]" aria-label="Situação de <?= Visao::escapar($custo->obter('nome')) ?>"><option value="pendente" <?= $custo->obter('situacao')==='pendente'?'selected':'' ?>>Selecione</option><option value="com_gasto" <?= $custo->obter('situacao')==='com_gasto'?'selected':'' ?>>Tenho gasto</option><option value="sem_gasto" <?= $custo->obter('situacao')==='sem_gasto'?'selected':'' ?>>Não tenho gasto aqui</option></select><span class="entrada-monetaria"><span>R$</span><input data-campo-custo type="text" name="valores[<?= Visao::escapar($custo->obter('custo_fixo_id')) ?>]" value="<?= (float)$custo->obter('valor_mensal') > 0 ? number_format((float) $custo->obter('valor_mensal'), 2, ',', '.') : '' ?>" inputmode="decimal" placeholder="0,00" <?= $custo->obter('situacao')==='sem_gasto'?'disabled':'' ?>></span><?php if ($custo->obter('personalizado')): ?><button class="botao-remover-custo" type="submit" name="acao" value="excluir_custo" formaction="" onclick="this.form.custo_id.value='<?= Visao::escapar($custo->obter('custo_fixo_id')) ?>';return confirm('Remover esta despesa?')" aria-label="Remover <?= Visao::escapar($custo->obter('nome')) ?>">×</button><?php endif; ?></div></div>
     <?php endforeach; ?>
     <input type="hidden" name="custo_id" value="">
     <div class="acoes-formulario"><button class="btn btn-primary" type="submit"><?= Visao::escapar($tradutor->obter('salvar_valores')) ?></button></div>
