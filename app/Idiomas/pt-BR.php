@@ -1,6 +1,6 @@
 <?php
 return [
-    'visao_geral'=>'Visão geral','custos_fixos'=>'Custos fixos','usuarios'=>'Usuários','comunidade'=>'Comunidade','indicar'=>'Indicar amigos',
+    'visao_geral'=>'Visão geral','custos_fixos'=>'Custos fixos','minhas_rendas'=>'Minhas rendas','calendario_anual'=>'Calendário anual','usuarios'=>'Usuários','comunidade'=>'Comunidade','indicar'=>'Indicar amigos',
     'futuro'=>'Seu futuro começa agora','titulo'=>'Prosperidade nasce de decisões claras.',
     'descricao'=>'Organize suas finanças, acompanhe seu progresso e transforme cada escolha em um passo rumo à abundância.',
     'ver_custos'=>'Ver meus custos','indicar_alguem'=>'Indicar alguém','renda'=>'Renda mensal','saldo'=>'Saldo projetado',
