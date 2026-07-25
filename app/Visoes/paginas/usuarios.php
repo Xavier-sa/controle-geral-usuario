@@ -4,7 +4,7 @@ $minhaLinha = current(array_filter($ranking, static fn(array $linha): bool => $l
 <section>
   <div class="section-title">
     <div><h1>Ranking da comunidade</h1><p>Cada perfil concluído por alguém que você convidou vale uma estrela.</p></div>
-    <?php if ($podeConvidar): ?><a class="btn btn-primary" href="?pagina=usuario_formulario">Convidar pessoa</a><?php endif; ?>
+    <?php if ($podeConvidar): ?><div class="chamada-convite"><span class="seta-convite" aria-hidden="true"><img src="assets/images/seta-convite.png" alt=""></span><a class="btn btn-primary" href="?pagina=usuario_formulario">Convidar pessoa</a></div><?php endif; ?>
   </div>
   <?php if (isset($_GET['convidado'])): ?><div class="mensagem-sucesso" role="status">Convite criado. A estrela será liberada quando a pessoa completar o primeiro acesso.</div><?php endif; ?>
   <?php if (!$podeConvidar): ?><div class="mensagem-bloqueio">Complete sua renda e empresa no primeiro acesso para liberar novos convites.</div><?php endif; ?>
