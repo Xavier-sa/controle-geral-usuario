@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Aplicacao\Repositorios;
 
 use Aplicacao\Modelos\Usuario;
-use Aplicacao\Nucleo\RepositorioJson;
+use Aplicacao\Nucleo\RepositorioDados;
 
 final class UsuarioRepositorio
 {
     private const ARQUIVO = 'usuarios.json';
 
-    public function __construct(private readonly RepositorioJson $repositorio) {}
+    public function __construct(private readonly RepositorioDados $repositorio) {}
 
     /** @return array<int, Usuario> */
     public function listar(): array
@@ -81,7 +81,7 @@ final class UsuarioRepositorio
     {
         $empresa = trim((string) ($dados['empresa'] ?? ''));
         $renda = $this->normalizarValor($dados['renda_mensal'] ?? null);
-        if ($empresa === '' || strlen($empresa) > 100 || $renda === false || $renda < 0 || empty($dados['aceite_privacidade'])) return false;
+        if ($empresa === '' || strlen($empresa) > 100 || $renda === false || $renda <= 0 || empty($dados['aceite_privacidade'])) return false;
 
         $usuarios = $this->repositorio->listar(self::ARQUIVO);
         foreach ($usuarios as &$usuario) {
@@ -105,6 +105,18 @@ final class UsuarioRepositorio
             || ($usuario->obter('perfil_completo_em') !== null
                 && $usuario->obter('empresa') !== null
                 && $usuario->obter('renda_mensal') !== null);
+    }
+
+    public function atualizarRendaTotal(string $identificador, float $total): void
+    {
+        $usuarios = $this->repositorio->listar(self::ARQUIVO);
+        foreach ($usuarios as &$usuario) {
+            if ($usuario['usuario_id'] !== $identificador) continue;
+            $usuario['renda_mensal'] = round($total, 2);
+            $usuario['atualizado_em'] = gmdate('c');
+        }
+        unset($usuario);
+        $this->repositorio->salvar(self::ARQUIVO, $usuarios);
     }
 
     /** @return array<int, array{usuario: Usuario, estrelas: int, posicao: int}> */
