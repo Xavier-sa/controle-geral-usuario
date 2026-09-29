@@ -38,5 +38,7 @@
   <div class="grid-2"><section class="panel"><div class="panel-head"><h2><?= Visao::escapar($tradutor->obter('custos_mes')) ?></h2><a class="action-btn" href="?pagina=custos&amp;idioma=<?= $idioma ?>">Ver todos →</a></div>
     <?php $custosExibidos = array_slice($custos, 0, 4); require dirname(__DIR__) . '/componentes/lista-custos.php'; ?>
   </section><section class="panel quote-card"><span class="eyebrow"><?= Visao::escapar($tradutor->obter('meta')) ?></span><blockquote><?= Visao::escapar($tradutor->obter('frase')) ?></blockquote><div class="progress"><span style="width:<?= (int) $resumo->obter('percentual_meta') ?>%"></span></div><small><?= (int) $resumo->obter('percentual_meta') ?>%</small></section></div>
+  <?php require dirname(__DIR__) . '/componentes/ofertas-serasa.php'; ?>
 </section>
 <?php require dirname(__DIR__) . '/componentes/galeria-prosperidade.php'; ?>
+
