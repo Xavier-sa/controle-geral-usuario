@@ -1,13 +1,6 @@
 <?php
 $meses = [1=>'Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-$custoNoMes = static function($custo, string $mes): bool {
-    $inicio = substr((string)($custo->obter('recorrencia_inicio') ?: date('Y-01-01')), 0, 7);
-    $fimValor = $custo->obter('recorrencia_fim');
-    $fim = $fimValor ? substr((string)$fimValor, 0, 7) : null;
-    $recorrente = $custo->obter('recorrente') === null ? true : (bool)$custo->obter('recorrente');
-    if (!$recorrente) return $mes === $inicio;
-    return $mes >= $inicio && ($fim === null || $mes <= $fim);
-};
+$custoNoMes = static fn($custo, string $mes): bool => $custo->pertenceAoPeriodo($mes);
 ?>
 <section>
   <div class="section-title"><div><h1>Calendário anual de gastos</h1><p>Projete despesas mensais que continuam até você definir um término ou removê-las.</p></div><div class="navegacao-ano"><a class="action-btn" href="?pagina=calendario&amp;ano=<?= $anoCalendario-1 ?>">←</a><strong><?= $anoCalendario ?></strong><a class="action-btn" href="?pagina=calendario&amp;ano=<?= $anoCalendario+1 ?>">→</a></div></div>

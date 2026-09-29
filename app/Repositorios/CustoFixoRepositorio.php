@@ -6,6 +6,7 @@ namespace Aplicacao\Repositorios;
 
 use Aplicacao\Modelos\CustoFixo;
 use Aplicacao\Nucleo\RepositorioDados;
+use InvalidArgumentException;
 
 final class CustoFixoRepositorio
 {
@@ -113,6 +114,28 @@ final class CustoFixoRepositorio
         );
     }
 
+    /** @return array<int, array{category:string,total:float}> */
+    public function gastosPorCategoriaNoMes(string $usuarioId, string $periodo): array
+    {
+        if (!preg_match('/^\d{4}-(0[1-9]|1[0-2])$/', $periodo)) {
+            throw new InvalidArgumentException('Período inválido. Use o formato YYYY-MM.');
+        }
+        $totais = [];
+        foreach ($this->listarPorUsuario($usuarioId) as $custo) {
+            if ($custo->obter('ativo') === false || $custo->obter('situacao') !== 'com_gasto' || !$custo->pertenceAoPeriodo($periodo)) continue;
+            $valor = filter_var($custo->obter('valor_mensal'), FILTER_VALIDATE_FLOAT);
+            if ($valor === false || $valor <= 0) continue;
+            $categoria = $this->normalizarCategoria((string) $custo->obter('categoria'));
+            if ($categoria === null) continue;
+            $chave = $categoria['chave'];
+            $totais[$chave] ??= ['category' => $categoria['rotulo'], 'total' => 0.0];
+            $totais[$chave]['total'] = round($totais[$chave]['total'] + (float) $valor, 2);
+        }
+        $resultado = array_values($totais);
+        usort($resultado, static fn(array $a, array $b): int => $b['total'] <=> $a['total'] ?: strcmp($a['category'], $b['category']));
+        return $resultado;
+    }
+
     public function atualizarRecorrencia(string $usuarioId, string $custoId, bool $recorrente, string $inicio, ?string $fim, mixed $diaVencimento): bool
     {
         if (!preg_match('/^\d{4}-\d{2}$/', $inicio)) return false;
@@ -165,6 +188,28 @@ final class CustoFixoRepositorio
     {
         $todos = array_values(array_filter($this->repositorio->listar('custos_fixos.json'), static fn(array $c): bool => $c['usuario_id'] !== $usuarioId));
         $this->repositorio->salvar('custos_fixos.json', $todos);
+    }
+
+    /** @return array{chave:string,rotulo:string}|null */
+    private function normalizarCategoria(string $categoria): ?array
+    {
+        $categoria = trim((string) preg_replace('/\s+/u', ' ', $categoria));
+        if ($categoria === '') return null;
+        if (function_exists('mb_strtolower')) {
+            $chave = mb_strtolower($categoria, 'UTF-8');
+            $primeira = mb_strtoupper(mb_substr($chave, 0, 1, 'UTF-8'), 'UTF-8');
+            $rotulo = $primeira . mb_substr($chave, 1, null, 'UTF-8');
+        } else {
+            $chave = strtolower(strtr($categoria, ['Á'=>'á','À'=>'à','Â'=>'â','Ã'=>'ã','É'=>'é','Ê'=>'ê','Í'=>'í','Ó'=>'ó','Ô'=>'ô','Õ'=>'õ','Ú'=>'ú','Ç'=>'ç']));
+            $rotulo = ucfirst($chave);
+            foreach (['á'=>'Á','à'=>'À','â'=>'Â','ã'=>'Ã','é'=>'É','ê'=>'Ê','í'=>'Í','ó'=>'Ó','ô'=>'Ô','õ'=>'Õ','ú'=>'Ú','ç'=>'Ç'] as $minuscula => $maiuscula) {
+                if (str_starts_with($chave, $minuscula)) {
+                    $rotulo = $maiuscula . substr($chave, strlen($minuscula));
+                    break;
+                }
+            }
+        }
+        return ['chave' => $chave, 'rotulo' => $rotulo];
     }
 
     private function normalizarValor(mixed $valor): float|false
